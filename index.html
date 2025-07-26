@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CJCHT</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="logo-fixed">
+        <a href="#">CJCHT</a>
+    </div>
+
+    <section class="hero-section">
+        <nav class="nav-menu">
+            <a href="#" class="nav-link">FOOTWEAR</a>
+            <a href="#" class="nav-link">CULTURE</a>
+            <a href="#" class="nav-link">SUSTAINABILITY</a>
+            <a href="#" class="nav-link">GLOBAL</a>
+            <a href="#" class="nav-link">CONTACT</a>
+            <a href="#" class="nav-link">ABOUT</a>
+        </nav>
+        <div class="slide active" style="background-image: url('backgrounds/87f71ea99f55f55a2aec7173ea1ed7b6ca702c96-c14.jpeg');"></div>
+        <div class="slide" style="background-image: url('backgrounds/83dd58e0004076e4c594596efda21e4c6786ecda-c15.jpeg');"></div>
+        <div class="slide" style="background-image: url('backgrounds/dd74607f4b1bb1d22e2506f3978d294ef37fa6a8-leather1.jpeg');"></div>
+        <div class="slide" style="background-image: url('backgrounds/abe9c7559efa26e016fcdcba9d84c3e10176e5f8-kehua-1.jpeg');"></div>
+
+        <div class="hero-content">
+        </div>
+    </section>
+
+    <div class="content-below">
+        <div class="container">
+            <main class="text-sections">
+
+                <section class="text-section">
+                    <h2>About CJCHT</h2>
+                    <p>Since 1989, CJCHT has been a certified women's business enterprise dedicated to delivering exceptional quality and service. Our legacy spans over three decades of innovation, craftsmanship, and unwavering commitment to excellence in the footwear industry.</p>
+                    <a href="#" class="section-link">Learn More →</a>
+                </section>
+
+                <section class="text-section">
+                    <h2>Footwear Excellence</h2>
+                    <p>Our innovative designs merge contemporary aesthetics with traditional craftsmanship. Each product reflects our dedication to quality materials, sustainable practices, and cutting-edge manufacturing techniques that ensure comfort and durability.</p>
+                    <a href="#" class="section-link">View Collection →</a>
+                </section>
+
+                <section class="text-section">
+                    <h2>Cultural Impact</h2>
+                    <p>Beyond manufacturing, we foster community engagement through arts, music, and knowledge sharing. Our cultural initiatives, including the Boven Magazine Library, demonstrate our commitment to enriching lives and building meaningful connections.</p>
+                    <a href="#" class="section-link">Explore Culture →</a>
+                </section>
+
+                <section class="text-section">
+                    <h2>Global Presence</h2>
+                    <p>From our Putian showroom to international partnerships, we connect with clients and collaborators worldwide. Our global network enables us to deliver localized solutions while maintaining our high standards of quality and service.</p>
+                    <a href="#" class="section-link">Our Locations →</a>
+                </section>
+
+                <section class="text-section">
+                    <h2>Sustainability Commitment</h2>
+                    <p>We are dedicated to creating a socially and environmentally responsible future. Through sustainable sourcing, eco-friendly production methods, and community partnerships, we work to minimize our environmental impact while maximizing positive change.</p>
+                    <a href="#" class="section-link">Sustainability Report →</a>
+                </section>
+
+            </main>
+        </div>
+
+        <footer>
+            <p>&copy; 2024 CJCHT. All Rights Reserved. | Redesign by Gemini</p>
+        </footer>
+    </div>
+
+    <script>
+        // Hero slideshow
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const slideCount = slides.length;
+
+        setInterval(() => {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slideCount;
+            slides[currentSlide].classList.add('active');
+        }, 5000); // Change slide every 5 seconds
+
+    </script>
+
+</body>
+</html>
