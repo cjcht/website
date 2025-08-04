@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - CJCHT</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="about.css">
+</head>
+<body>
+
+    <div class="logo-fixed">
+        <a href="index.html">CJCHT</a>
+    </div>
+
+    <nav class="nav-menu">
+        <div class="mobile-menu-toggle">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+        </div>
+        <div class="mobile-menu-close">
+            <span class="close-line"></span>
+            <span class="close-line"></span>
+        </div>
+        <div class="nav-links">
+            <div class="nav-logo">
+                <a href="index.html">CJCHT</a>
+            </div>
+            <div class="nav-menu-items">
+                <a href="#" class="nav-link">FOOTWEAR</a>
+                <a href="#" class="nav-link">CULTURE</a>
+                <a href="#" class="nav-link">SUSTAINABILITY</a>
+                <a href="#" class="nav-link">GLOBAL</a>
+                <a href="#" class="nav-link">CONTACT</a>
+                <a href="about.html" class="nav-link active">ABOUT</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="about-container">
+        <div class="about-hero">
+            <div class="about-hero-image">
+                <img src="images/hero.jpeg" alt="CJCHT" />
+            </div>
+        </div>
+
+        <div class="about-content">
+            <div class="about-section">
+                <h1>About CJCHT</h1>
+                <div class="about-intro">
+                    <p>Since 1989, CJCHT has been a certified women's business enterprise dedicated to delivering exceptional quality and service. Our legacy spans over three decades of innovation, craftsmanship, and unwavering commitment to excellence in the footwear industry.</p>
+                </div>
+            </div>
+
+            <div class="about-section">
+                <h2>Our Story</h2>
+                <p>Founded as a women-owned business enterprise, CJCHT has grown from a small footwear manufacturer to a globally recognized brand. Our journey began with a simple vision: to create high-quality footwear that combines traditional craftsmanship with modern innovation.</p>
+                <p>Over the years, we have built strong relationships with partners across Asia, Europe, and North America, establishing ourselves as a trusted name in the industry. Our commitment to excellence extends beyond our products to encompass our values of sustainability, cultural engagement, and community building.</p>
+            </div>
+
+            <div class="about-section">
+                <h2>Our Mission</h2>
+                <p>We strive to create exceptional footwear that not only meets the highest standards of quality and comfort but also reflects our commitment to environmental responsibility and social impact. Through innovative design, sustainable practices, and meaningful partnerships, we aim to make a positive difference in the world.</p>
+            </div>
+
+            <div class="about-section">
+                <h2>Core Values</h2>
+                <div class="values-grid">
+                    <div class="value-item">
+                        <h3>Quality Excellence</h3>
+                        <p>Every product we create reflects our unwavering commitment to superior craftsmanship and attention to detail.</p>
+                    </div>
+                    <div class="value-item">
+                        <h3>Sustainable Innovation</h3>
+                        <p>We continuously seek new ways to minimize our environmental impact while maximizing positive change.</p>
+                    </div>
+                    <div class="value-item">
+                        <h3>Cultural Engagement</h3>
+                        <p>Through initiatives like the Boven Magazine Library, we foster community connections and cultural enrichment.</p>
+                    </div>
+                    <div class="value-item">
+                        <h3>Global Partnership</h3>
+                        <p>Our worldwide network enables us to deliver localized solutions while maintaining universal standards.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-section">
+                <h2>Leadership</h2>
+                <p>Our leadership team brings together decades of experience in footwear manufacturing, sustainable business practices, and global market development. As a certified women's business enterprise, we are proud to champion diversity and inclusion in everything we do.</p>
+            </div>
+
+            <div class="about-section">
+                <h2>Global Presence</h2>
+                <p>From our showroom in Putian to international partnerships across Asia, Europe, and North America, CJCHT maintains a truly global presence. Our international network allows us to understand local markets while delivering consistent quality and service worldwide.</p>
+            </div>
+
+            <div class="about-section">
+                <h2>Certifications & Recognition</h2>
+                <ul class="certifications-list">
+                    <li>Certified Women's Business Enterprise (WBE)</li>
+                    <li>ISO 9001 Quality Management System</li>
+                    <li>Sustainable Manufacturing Practices Certification</li>
+                    <li>International Fair Trade Standards Compliance</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 CJCHT. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileToggle = document.querySelector('.mobile-menu-toggle');
+            const mobileClose = document.querySelector('.mobile-menu-close');
+            const navLinks = document.querySelector('.nav-links');
+            const navMenu = document.querySelector('.nav-menu');
+            const body = document.body;
+
+            mobileToggle.addEventListener('click', function() {
+                navMenu.classList.add('mobile-menu-open');
+                body.classList.add('menu-open');
+            });
+
+            mobileClose.addEventListener('click', function() {
+                navMenu.classList.remove('mobile-menu-open');
+                body.classList.remove('menu-open');
+            });
+
+            // Close menu when clicking on a link
+            const navLinkElements = document.querySelectorAll('.nav-link');
+            navLinkElements.forEach(link => {
+                link.addEventListener('click', function() {
+                    navMenu.classList.remove('mobile-menu-open');
+                    body.classList.remove('menu-open');
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
