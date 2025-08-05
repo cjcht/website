@@ -16,11 +16,10 @@
 
     <section class="hero-section">
         <nav class="nav-menu">
-            <a href="#" class="nav-link">FOOTWEAR</a>
-            <a href="#" class="nav-link">CULTURE</a>
-            <a href="#" class="nav-link">SUSTAINABILITY</a>
-            <a href="#" class="nav-link">GLOBAL</a>
-            <a href="#" class="nav-link">CONTACT</a>
+            <a href="footwear.html" class="nav-link">FOOTWEAR</a>
+            <a href="culture.html" class="nav-link">CULTURE</a>
+            <a href="sustainability.html" class="nav-link">SUSTAINABILITY</a>
+            <a href="contact.html" class="nav-link">CONTACT</a>
             <a href="about.html" class="nav-link">ABOUT</a>
         </nav>
         <div class="slide active" style="background-image: url('backgrounds/87f71ea99f55f55a2aec7173ea1ed7b6ca702c96-c14.jpeg');"></div>
@@ -79,12 +78,91 @@
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide');
         const slideCount = slides.length;
+        const navMenu = document.querySelector('.nav-menu');
+        const logoFixed = document.querySelector('.logo-fixed a');
 
-        setInterval(() => {
+        // Function to get brightness of background image
+        function getImageBrightness(imageUrl, callback) {
+            const img = new Image();
+            img.crossOrigin = 'anonymous';
+            img.onload = function() {
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                canvas.width = this.width;
+                canvas.height = this.height;
+                ctx.drawImage(this, 0, 0);
+                
+                try {
+                    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                    const data = imageData.data;
+                    let r, g, b, avg, colorSum = 0;
+                    
+                    for (let x = 0, len = data.length; x < len; x += 4) {
+                        r = data[x];
+                        g = data[x + 1];
+                        b = data[x + 2];
+                        avg = Math.floor((r + g + b) / 3);
+                        colorSum += avg;
+                    }
+                    
+                    const brightness = Math.floor(colorSum / (canvas.width * canvas.height));
+                    callback(brightness);
+                } catch (e) {
+                    // Fallback for CORS issues
+                    callback(128); // neutral brightness
+                }
+            };
+            img.onerror = function() {
+                callback(128); // neutral brightness fallback
+            };
+            img.src = imageUrl;
+        }
+
+        // Function to adjust navigation colors based on background brightness
+        function adjustNavColors(brightness) {
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            if (brightness > 128) {
+                // Light background - use dark colors
+                navLinks.forEach(link => {
+                    link.style.color = '#2c3e50';
+                    link.style.textShadow = '0 1px 2px rgba(255,255,255,0.8)';
+                });
+                logoFixed.style.color = '#2c3e50';
+                logoFixed.style.textShadow = '0 1px 2px rgba(255,255,255,0.8)';
+            } else {
+                // Dark background - use light colors
+                navLinks.forEach(link => {
+                    link.style.color = '#ffffff';
+                    link.style.textShadow = '0 1px 3px rgba(0,0,0,0.8)';
+                });
+                logoFixed.style.color = '#ffffff';
+                logoFixed.style.textShadow = '0 1px 3px rgba(0,0,0,0.8)';
+            }
+        }
+
+        // Function to change slide and adjust colors
+        function changeSlide() {
             slides[currentSlide].classList.remove('active');
             currentSlide = (currentSlide + 1) % slideCount;
             slides[currentSlide].classList.add('active');
-        }, 5000); // Change slide every 5 seconds
+            
+            // Get current slide background image URL
+            const currentSlideElement = slides[currentSlide];
+            const bgImageUrl = currentSlideElement.style.backgroundImage
+                .replace(/url\(['"]?(.+?)['"]?\)/i, '$1');
+            
+            // Adjust colors based on new background
+            getImageBrightness(bgImageUrl, adjustNavColors);
+        }
+
+        // Initialize colors for first slide
+        const firstSlideUrl = slides[0].style.backgroundImage
+            .replace(/url\(['"]?(.+?)['"]?\)/i, '$1');
+        getImageBrightness(firstSlideUrl, adjustNavColors);
+
+        // Change slide every 5 seconds
+        setInterval(changeSlide, 5000);
 
     </script>
 

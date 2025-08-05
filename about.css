@@ -73,7 +73,7 @@ body.menu-open {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 25px;
+    gap: 15px;
 }
 
 .nav-link {
@@ -304,7 +304,7 @@ footer p {
         backdrop-filter: blur(10px);
         display: flex;
         flex-direction: column;
-        padding: 40px 15px 40px 40px;
+        padding: 40px 20px 40px 40px;
         opacity: 0;
         visibility: hidden;
         transition: all 0.4s ease;
@@ -330,13 +330,14 @@ footer p {
     .nav-menu-items {
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: flex-end;
-        gap: 15px;
+        gap: 8px;
         height: 100%;
         width: 100%;
         padding-right: 0;
         margin-right: 0;
+        padding-top: 80px;
     }
     
     .nav-menu.mobile-menu-open .nav-links {
@@ -357,7 +358,7 @@ footer p {
         font-weight: 300;
         letter-spacing: 1.5px;
         line-height: 1.2;
-        padding: 8px 0;
+        padding: 4px 0;
         color: #fff;
         text-align: right;
         border: none;

@@ -1,0 +1,368 @@
+/* Contact Page Styles - Inspired by KKAA About Page */
+
+body {
+    background-color: #f8fafb;
+    color: #2c3e50;
+}
+
+.logo-fixed a {
+    color: #2c3e50;
+}
+
+.contact-container {
+    padding-top: 120px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.contact-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.contact-header h1 {
+    font-size: 48px;
+    font-weight: 300;
+    color: #2c3e50;
+    margin: 0 0 15px 0;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+}
+
+.header-subtitle {
+    font-size: 18px;
+    font-weight: 300;
+    color: #718096;
+    margin: 0;
+    letter-spacing: 0.5px;
+}
+
+.offices-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin-bottom: 80px;
+}
+
+.office-card {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    padding: 30px;
+    transition: all 0.3s ease;
+}
+
+.office-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    border-color: #EE9B35;
+}
+
+.office-location {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.office-location h2 {
+    font-size: 24px;
+    font-weight: 500;
+    color: #2c3e50;
+    margin: 0;
+    line-height: 1.3;
+}
+
+.office-type {
+    font-size: 12px;
+    color: #EE9B35;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.office-details {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.office-address p {
+    font-size: 15px;
+    color: #4a5568;
+    margin: 0 0 8px 0;
+    line-height: 1.6;
+    font-weight: 300;
+}
+
+.office-address p:last-child {
+    margin-bottom: 0;
+    font-weight: 400;
+    color: #2c3e50;
+}
+
+.office-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.contact-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+}
+
+.contact-label {
+    font-size: 13px;
+    color: #718096;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    min-width: 60px;
+}
+
+.contact-value {
+    font-size: 14px;
+    color: #2c3e50;
+    font-weight: 400;
+    text-align: right;
+}
+
+.general-contact {
+    background: #fff;
+    border: 2px solid #EE9B35;
+    border-radius: 8px;
+    padding: 40px;
+    margin-bottom: 80px;
+}
+
+.general-contact-content h2 {
+    font-size: 28px;
+    font-weight: 400;
+    color: #2c3e50;
+    margin: 0 0 20px 0;
+    line-height: 1.3;
+    text-align: center;
+}
+
+.general-contact-content p {
+    font-size: 16px;
+    color: #4a5568;
+    line-height: 1.7;
+    margin: 0 0 30px 0;
+    text-align: center;
+    font-weight: 300;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+}
+
+.general-contact-info {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.contact-item.primary {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+}
+
+.contact-item.primary .contact-label {
+    font-size: 14px;
+    color: #718096;
+    margin-bottom: 5px;
+}
+
+.contact-item.primary .contact-value {
+    font-size: 18px;
+    color: #2c3e50;
+    font-weight: 500;
+}
+
+.business-hours {
+    text-align: center;
+    padding-top: 30px;
+    border-top: 1px solid #e2e8f0;
+}
+
+.business-hours h3 {
+    font-size: 18px;
+    font-weight: 500;
+    color: #2c3e50;
+    margin: 0 0 15px 0;
+}
+
+.business-hours p {
+    font-size: 14px;
+    color: #718096;
+    margin: 0 0 8px 0;
+    line-height: 1.6;
+}
+
+.business-hours p:last-child {
+    margin-bottom: 0;
+    font-style: italic;
+}
+
+footer {
+    background-color: #f8fafb;
+    border-top: 1px solid #e2e8f0;
+    margin-top: 80px;
+    padding: 60px 40px;
+    text-align: center;
+}
+
+footer p {
+    color: #718096;
+    font-size: 14px;
+    font-weight: 300;
+    margin: 0;
+}
+
+/* Tablet Styles */
+@media (max-width: 1024px) {
+    .contact-container {
+        padding-top: 100px;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+    
+    .contact-header h1 {
+        font-size: 40px;
+    }
+    
+    .offices-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+    }
+    
+    .office-card {
+        padding: 25px;
+    }
+    
+    .general-contact {
+        padding: 30px;
+    }
+    
+    .general-contact-info {
+        gap: 40px;
+    }
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .contact-container {
+        padding-top: 120px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    
+    .contact-header h1 {
+        font-size: 32px;
+        margin-bottom: 10px;
+    }
+    
+    .header-subtitle {
+        font-size: 16px;
+    }
+    
+    .offices-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .office-card {
+        padding: 20px;
+    }
+    
+    .office-location {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    .office-location h2 {
+        font-size: 20px;
+    }
+    
+    .office-type {
+        font-size: 11px;
+    }
+    
+    .office-details {
+        gap: 20px;
+    }
+    
+    .contact-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+        padding: 6px 0;
+    }
+    
+    .contact-value {
+        text-align: left;
+        font-size: 13px;
+    }
+    
+    .general-contact {
+        padding: 25px 20px;
+    }
+    
+    .general-contact-content h2 {
+        font-size: 24px;
+    }
+    
+    .general-contact-content p {
+        font-size: 15px;
+    }
+    
+    .general-contact-info {
+        flex-direction: column;
+        gap: 25px;
+    }
+    
+    .contact-item.primary .contact-value {
+        font-size: 16px;
+    }
+    
+    footer {
+        padding: 40px 20px;
+        margin-top: 60px;
+    }
+}
+
+/* Small Mobile Styles */
+@media (max-width: 480px) {
+    .contact-header h1 {
+        font-size: 28px;
+    }
+    
+    .office-card {
+        padding: 15px;
+    }
+    
+    .office-location h2 {
+        font-size: 18px;
+    }
+    
+    .general-contact {
+        padding: 20px 15px;
+    }
+    
+    .general-contact-content h2 {
+        font-size: 22px;
+    }
+}
