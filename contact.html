@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="about.css">
     <link rel="stylesheet" href="contact.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
 <body>
 
@@ -72,6 +73,7 @@
                             <span class="contact-value">info@cjcht.com</span>
                         </div>
                     </div>
+                    <div class="office-map" id="map-taipei" data-coords="25.0478,121.5193" data-address="11F, No.35, Sec.1, ZhongXiao E. Rd., ZhongZheng Dist., Taipei City 100, Taiwan"></div>
                 </div>
             </div>
 
@@ -101,6 +103,7 @@
                             <span class="contact-value">info@cjcht.com</span>
                         </div>
                     </div>
+                    <div class="office-map" id="map-shanghai" data-coords="31.1871,121.4374" data-address="7F, Kunyang Bldg., No.798, Zhao Jia Bang Rd, Xu Hui District, Shanghai, China"></div>
                 </div>
             </div>
 
@@ -130,6 +133,7 @@
                             <span class="contact-value">info@cjcht.com</span>
                         </div>
                     </div>
+                    <div class="office-map" id="map-putian" data-coords="25.4513,119.0069" data-address="20F, No.530, Lihua Mid Rd, Putian, Fujian, China"></div>
                 </div>
             </div>
 
@@ -160,6 +164,7 @@
                             <span class="contact-value">info@cjcht.com</span>
                         </div>
                     </div>
+                    <div class="office-map" id="map-shenzhen" data-coords="22.5455,114.0683" data-address="Room 703, Block A, Carrianna Friendship Square, No. 2002 Renmin South Road, Shenzhen, China"></div>
                 </div>
             </div>
 
@@ -189,6 +194,7 @@
                             <span class="contact-value">info@cjcht.com</span>
                         </div>
                     </div>
+                    <div class="office-map" id="map-bentonville" data-coords="36.3729,-94.2088" data-address="606 NW B Street, Bentonville, AR 72712, United States"></div>
                 </div>
             </div>
 
@@ -214,6 +220,7 @@
                             <span class="contact-value">info@cjcht.com</span>
                         </div>
                     </div>
+                    <div class="office-map" id="map-vienna" data-coords="48.1975,16.3501" data-address="Stumpergasse 40/21, A-1060, Wien, Austria"></div>
                 </div>
             </div>
         </div>
@@ -239,13 +246,105 @@
                 </div>
             </div>
         </div>
+
     </main>
 
     <footer>
         <p>&copy; 2025 CJCHT. All Rights Reserved. | Redesign by AI</p>
     </footer>
 
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
+        // Office locations data
+        const officeLocations = [
+            {
+                name: 'Taipei Head Office',
+                address: '11F, No.35, Sec.1, ZhongXiao E. Rd., ZhongZheng Dist., Taipei City 100, Taiwan',
+                coords: [25.0478, 121.5193],
+                phone: '+886 2 3393-0801',
+                type: 'Head Office'
+            },
+            {
+                name: 'Shanghai Office',
+                address: '7F, Kunyang Bldg., No.798, Zhao Jia Bang Rd, Xu Hui District, Shanghai, China',
+                coords: [31.1871, 121.4374],
+                phone: '+86 21 51793799',
+                type: 'China Operations'
+            },
+            {
+                name: 'Putian Office',
+                address: '20F, No.530, Lihua Mid Rd, Putian, Fujian, China',
+                coords: [25.4513, 119.0069],
+                phone: '+86 594 2673111',
+                type: 'Manufacturing & Showroom'
+            },
+            {
+                name: 'Shenzhen Office',
+                address: 'Room 703, Block A, Carrianna Friendship Square, No. 2002 Renmin South Road, Shenzhen, China',
+                coords: [22.5455, 114.0683],
+                phone: '+86 755 82288360',
+                type: 'Regional Office'
+            },
+            {
+                name: 'Bentonville Office',
+                address: '606 NW B Street, Bentonville, AR 72712, United States',
+                coords: [36.3729, -94.2088],
+                phone: '+1 479 254 8265',
+                type: 'North America'
+            },
+            {
+                name: 'Vienna Office',
+                address: 'Stumpergasse 40/21, A-1060, Wien, Austria',
+                coords: [48.1975, 16.3501],
+                phone: '+43-(0)-1-595-1153',
+                type: 'Europe'
+            }
+        ];
+
+        // Initialize individual office maps
+        function initializeIndividualMaps() {
+            // Minimal custom icon - KKAA inspired
+            const officeIcon = L.divIcon({
+                className: 'custom-office-marker',
+                html: `<div class="marker-pin">
+                         <div class="marker-icon"></div>
+                       </div>`,
+                iconSize: [20, 20],
+                iconAnchor: [10, 10],
+                popupAnchor: [0, -10]
+            });
+
+            // Find all map containers and initialize each one
+            const mapContainers = document.querySelectorAll('.office-map');
+            
+            mapContainers.forEach(container => {
+                const coords = container.dataset.coords.split(',').map(parseFloat);
+                const address = container.dataset.address;
+                const officeName = container.id.replace('map-', '').charAt(0).toUpperCase() + container.id.replace('map-', '').slice(1);
+                
+                // Initialize individual map
+                const map = L.map(container.id).setView(coords, 15);
+                
+                // Add tile layer with KKAA-inspired minimal styling
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '© OpenStreetMap contributors',
+                    maxZoom: 18
+                }).addTo(map);
+                
+                // Add marker for this office
+                const marker = L.marker(coords, { icon: officeIcon }).addTo(map);
+                
+                const popupContent = `
+                    <div class="map-popup">
+                        <h3>${officeName} Office</h3>
+                        <p class="popup-address">${address}</p>
+                    </div>
+                `;
+                
+                marker.bindPopup(popupContent);
+            });
+        }
+
         // Mobile menu toggle functionality
         document.addEventListener('DOMContentLoaded', function() {
             const mobileToggle = document.querySelector('.mobile-menu-toggle');
@@ -272,6 +371,9 @@
                     body.classList.remove('menu-open');
                 });
             });
+
+            // Initialize individual office maps when page loads
+            initializeIndividualMaps();
         });
     </script>
 
